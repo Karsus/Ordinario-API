@@ -1,0 +1,10 @@
+host: ftp.ipm.esy.es
+user: u417910668.ulsaipm
+contraseña: ulsaipm
+
+DB
+http://sql58.hostinger.es/phpmyadmin/index.php?db=u417910668_api
+DB: u417910668_api
+user: u417910668_api
+contraseña: ulsaipm
+host: mysql.hostinger.es

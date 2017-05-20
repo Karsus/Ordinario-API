@@ -1,0 +1,49 @@
+Tabla - Platillo
+
+ID
+Nombre
+Categoria
+Precio
+Disponibilidad
+Descripcion
+
+Tabla - Bebida
+
+ID
+Nombre
+Precio
+Disponibilidad
+Descripcion
+
+Tabla - Postre
+
+ID
+Nombre
+Precio
+Disponibilidad
+Descripcion
+
+Tabla - Guiso
+
+ID
+Nombre
+Disponibilidad
+
+
+Tabla - Pedido
+
+ID
+IDUsuario FK
+IDPlatillo
+IDBebida
+IDPostre
+IDGuiso
+
+
+Tabla - Usuario
+
+ID
+Nombre
+Correo
+Contraseña
+Matricula
