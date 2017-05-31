@@ -27,7 +27,11 @@ class Menu extends Controller
                 "msg" => "No comidita"
             );
 
-        return $respuesta;
+        return response()->json($respuesta,200,[
+            'Access-Control-Allow-Headers' => 'Origin ,X-Requested-With ,Content-Type ,Accept ,Access-Control-Request-Method',
+            'Access-Control-Allow-Methods' => 'GET ,POST ,OPTIONS ,PUT ,PATCH ,DELETE',
+            'Access-Control-Allow-Origin' => '*'
+        ]);
     }
 
     public function por_categoria($cat)

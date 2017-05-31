@@ -56,30 +56,20 @@ $app->get('/menu/{categoria}', function ($categoria) use ($app) {
 			"total"=>count($results)
 		);
 	}
-	return response()->json($respuesta);
+	return response()->json($respuesta,200,[
+            'Access-Control-Allow-Headers' => 'Origin ,X-Requested-With ,Content-Type ,Accept ,Access-Control-Request-Method',
+            'Access-Control-Allow-Methods' => 'GET ,POST ,OPTIONS ,PUT ,PATCH ,DELETE',
+            'Access-Control-Allow-Origin' => '*'
+        ]);
 });
 
-$app->get('/pedido/{idusuario}', function ($idusuario) use ($app) {
-	$results = DB::select("SELECT * FROM menu WHERE id = $idusuario");
+$app->get('/pedido/{idusuario}', 'Pedido@por_id');
 
-	if (count($results)>0)
-	{
-		$respuesta = array(
-			"datos"=>$results,
-			"error"=>false,
-			"total"=>count($results)
-		);
-	}
-	else
-	{
-		$respuesta = array(
-			"datos"=>false,
-			"error"=>true,
-			"total"=>count($results)
-		);
-	}
-	return response()->json($respuesta);
-});
+$app->get('/pedidov/', 'Pedido@todo');
+
+$app->post('/pedir', 'Pedido@guardar');
+
+$app->put('/actualizarestatus', 'Actualizaciones@actualizarestatus');
 
 //Aplicacion de Escritorio
 $app->get('/pedido', function () use ($app) {
@@ -101,5 +91,9 @@ $app->get('/pedido', function () use ($app) {
 			"total"=>count($results)
 		);
 	}
-	return response()->json($respuesta);
+	return response()->json($respuesta,200,[
+            'Access-Control-Allow-Headers' => 'Origin ,X-Requested-With ,Content-Type ,Accept ,Access-Control-Request-Method',
+            'Access-Control-Allow-Methods' => 'GET ,POST ,OPTIONS ,PUT ,PATCH ,DELETE',
+            'Access-Control-Allow-Origin' => '*'
+        ]);
 });

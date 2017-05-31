@@ -5,26 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PedidoNuevo extends Controller
+class Menu extends Controller
 {
-    public function __construct()
-    {
-    }
 
-    public function guardar(Request $request)
+    public function actualizarestatus(Request $request)
     {
         $input = $request->all();
 
-        $result = DB::table('pedido')->insert([
-            'IDUsuario' => $input['idu'],
-            'IDcomida' => $input['idc'],
-            'IDbebida' => $input['idb'],
-            'IDpostre' => $input['idp'],
-            'Estatus' => "Enviado",
-            'Total' => $input['tt']
-        ]);
+        $results = DB::table('pedido')->where('ID', $input['idp'])->update(['Estatus' => $input['esta']]);
 
-        if($result){
+         if($result){
             $respuesta = array(
                 "datos"=> false,
                 "error" => false,
