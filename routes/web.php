@@ -67,6 +67,8 @@ $app->get('/pedido/{idusuario}', 'Pedido@por_id');
 
 $app->get('/pedidov/', 'Pedido@todo');
 
+$app->get('/historial', 'Pedido@entregado');
+
 $app->post('/pedir', 'Pedido@guardar');
 
 $app->put('/actualizarestatus', 'Actualizaciones@actualizarestatus');
@@ -91,9 +93,5 @@ $app->get('/pedido', function () use ($app) {
 			"total"=>count($results)
 		);
 	}
-	return response()->json($respuesta,200,[
-            'Access-Control-Allow-Headers' => 'Origin ,X-Requested-With ,Content-Type ,Accept ,Access-Control-Request-Method',
-            'Access-Control-Allow-Methods' => 'GET ,POST ,OPTIONS ,PUT ,PATCH ,DELETE',
-            'Access-Control-Allow-Origin' => '*'
-        ]);
+	return response()->json($respuesta);
 });

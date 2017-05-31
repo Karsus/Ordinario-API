@@ -35,6 +35,30 @@ class Pedido extends Controller
         ]);
     }
 
+    public function entregado()
+    {
+        $results = DB::select("SELECT * FROM pedido WHERE ESTATUS = 'Entregado'");
+
+        if(count($results)>0)
+            $respuesta = array(
+                "datos"=> $results,
+                "error" => false,
+                "msg" => "Pedidos encontrados"
+            );
+        else
+            $respuesta = array(
+                "datos"=> false,
+                "error" => true,
+                "msg" => "No se encontraron los pedidos"
+            );
+
+        return response()->json($respuesta,200,[
+            'Access-Control-Allow-Headers' => 'Origin ,X-Requested-With ,Content-Type ,Accept ,Access-Control-Request-Method',
+            'Access-Control-Allow-Methods' => 'GET ,POST ,OPTIONS ,PUT ,PATCH ,DELETE',
+            'Access-Control-Allow-Origin' => '*'
+        ]);
+    }
+
     public function por_id($id)
     {
         $results = DB::select("SELECT * FROM pedido WHERE IDUsuario = $id");
