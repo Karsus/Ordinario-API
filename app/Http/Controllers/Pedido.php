@@ -11,9 +11,9 @@ class Pedido extends Controller
     {
     }
 
-    public function todo($idco, )
+    public function todo()
     {
-        $results = DB::select("SELECT comida.Nombre FROM comida WHERE comida.ID = $idco");
+        $results = DB::select("SELECT * FROM pedido");
 
         if(count($results)>0)
             $respuesta = array(
